@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<script src="/js/src/pjax/pjaxBase.js"></script>
+ <script>
+    $(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:10});
+</script>
     <meta charset="utf-8" />
     <title>博客更新日志-2 | Light-yzcの赛博小窝</title>
     <meta name="author" content="Light-yzc" />
@@ -36,6 +42,13 @@
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 <body>
+<!-- 引用依赖 -->
+<link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+
+
     <div id="layout">
         <transition name="fade">
             <div id="loading" v-show="loading">
@@ -75,6 +88,11 @@
         <a href="/tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/playlist">
+            <i class="fa-solid fa-playlist fa-fw"></i>
+            <span>&ensp;PlayList</span>
         </a>
         
     </nav>
@@ -131,6 +149,15 @@
                     </div>
                 </a>
                 
+                <a href="/playlist">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-playlist fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">PlayList</div>
+                    </div>
+                </a>
+                
             </div>
         </transition>
     </nav>
@@ -161,7 +188,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Update/" style="color: #ff7d73">Update</a>
+                <a href="/tags/Update/" style="color: #00bcd4">Update</a>
             </span>
             
         </span>
@@ -184,10 +211,13 @@
 
             
 <footer id="footer">
+<!-- <linkrel="stylesheet"href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"> 
+<scriptsrc="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script> 
+<scriptsrc="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>  -->
+<!-- {% meting "7868005687" "tencent" "playlist" "theme:#555" "mutex:true" "listmaxheight:1000px" "preload:auto" %} -->
 
     <div id="footer-wrap">
-            <div><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&id=1987987485&auto=0&height=66"></iframe></div>
-
+            <!-- <div><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&id=1987987485&auto=0&height=66"></iframe></div> -->
         <div>
             &copy;
             2022 - 2024 Light-yzcの赛博小窝
@@ -203,7 +233,19 @@
         
     </div>
 
+    <!-- <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script> -->
+    <script>
+    $(document).pjax('a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax])', {
+    container: '#pjax-container',
+    fragment: '#pjax-container',
+    timeout: 8000
+    })
+</script>
+
+
 </footer>
+
 
         </div>
         
@@ -222,5 +264,38 @@
 
 
     
+
+// <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+// <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+// <script>
+//   // 对所有链接跳转事件绑定pjax容器pjax-container 
+//   $(document).pjax('a', '#pjax-container', {
+//     fragment:'#pjax-container',
+//     timeout:8
+//     });   
+// </script>  
+<!-- <div id="pjax-container"> -->
+
+<div id="contentleft" class="aplayer" 
+  data-id="390283037" 
+  data-server="netease" 
+  data-type="playlist" 
+  data-fixed="true" 
+  data-autoplay="false" 
+  data-order="list" 
+  data-volume="0.55" 
+  data-theme="#cc543a" 
+  data-preload="auto" >
+  
+</div>
+<!-- // </div> -->
+<script>
+  //用一个回调函数处理因为pjax失效的js
+  $(document).on('pjax:complete', function() {
+  })
+</script>
 </body>
+
+
+
 </html>
